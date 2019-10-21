@@ -22,7 +22,7 @@ public class RNPayfortSdkModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
-    return "RNPayfortSdk";
+    return "RNReactNativePayfortSdk";
   }
 
   @ReactMethod
