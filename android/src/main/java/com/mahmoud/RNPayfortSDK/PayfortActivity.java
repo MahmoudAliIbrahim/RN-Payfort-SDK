@@ -1,23 +1,16 @@
-package com.reactlibrary;
+package com.mahmoud.RNPayfortSDK;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.payfort.fort.android.sdk.base.FortSdk;
 import com.payfort.fort.android.sdk.base.callbacks.FortCallBackManager;
@@ -28,6 +21,7 @@ import com.payfort.sdk.android.dependancies.models.FortRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -152,8 +146,13 @@ public class PayfortActivity extends Activity {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        byte[] encodedhash = digest.digest(
-                originalString.getBytes(StandardCharsets.UTF_8));
+        byte[] encodedhash = new byte[0];
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            encodedhash = digest.digest(
+                    originalString.getBytes(StandardCharsets.UTF_8));
+        }else{
+            encodedhash = digest.digest(originalString.getBytes(Charset.forName("UTF-8")));
+        }
         return bytesToHex(encodedhash);
     }
 
