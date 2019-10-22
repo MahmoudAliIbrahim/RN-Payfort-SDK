@@ -31,7 +31,6 @@ import java.util.Map;
 public class PayfortActivity extends Activity {
 
     FortCallBackManager fortCallback;
-    ProgressDialog pbLoading;
     String deviceId, isLive, accessCode, merchantIdentifier, requestPhrase,
             customerEmail, currency, amount, merchantReference, customerName, customerIp, paymentOption, orderDescription, command = "PURCHASE", language = "en";
 
@@ -41,10 +40,6 @@ public class PayfortActivity extends Activity {
         setContentView(R.layout.activity_payfort);
 
         parseData();
-
-        pbLoading = new ProgressDialog(this);
-        pbLoading.setMessage("Fetching data...");
-        pbLoading.show();
 
         fortCallback = FortCallback.Factory.create();
         deviceId = FortSdk.getDeviceId(PayfortActivity.this);
@@ -116,7 +111,6 @@ public class PayfortActivity extends Activity {
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                pbLoading.dismiss();
                 Log.e("SUCCESS", response.toString());
                 try {
                     startFortRequest(response.getString("sdk_token"));
@@ -130,7 +124,6 @@ public class PayfortActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                pbLoading.dismiss();
                 Log.e("FAIL", error.toString());
                 finish();
                 RNPayfortSdkModule.onFail.invoke();
