@@ -39,7 +39,7 @@ public class PayfortActivity extends Activity {
     FortCallBackManager fortCallback;
     ProgressDialog pbLoading;
     String deviceId, isLive, accessCode, merchantIdentifier, requestPhrase,
-            customerEmail, currency, amount, merchantReference, customerName, customerIp, paymentOption, orderDescription;
+            customerEmail, currency, amount, merchantReference, customerName, customerIp, paymentOption, orderDescription, command = "PURCHASE", language = "en";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +96,12 @@ public class PayfortActivity extends Activity {
         if (intent.hasExtra("order_description")) {
             orderDescription = intent.getStringExtra("order_description");
         }
+        if (intent.hasExtra("command")) {
+            command = intent.getStringExtra("command");
+        }
+        if (intent.hasExtra("language")) {
+            language = intent.getStringExtra("language");
+        }
     }
 
     private void requestGetToken() {
@@ -109,9 +115,9 @@ public class PayfortActivity extends Activity {
         params.put("service_command", "SDK_TOKEN");
         params.put("access_code", accessCode);
         params.put("merchant_identifier", merchantIdentifier);
-        params.put("language", "en");
+        params.put("language", language);
         params.put("device_id", deviceId);
-        params.put("signature", hashSignature(requestPhrase + "access_code=" + accessCode + "device_id=" + deviceId + "language=enmerchant_identifier=" + merchantIdentifier + "service_command=SDK_TOKEN" + requestPhrase));
+        params.put("signature", hashSignature(requestPhrase + "access_code=" + accessCode + "device_id=" + deviceId + "language="+language + "merchant_identifier=" + merchantIdentifier + "service_command=SDK_TOKEN" + requestPhrase));
         JSONObject parameters = new JSONObject(params);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
             @Override
@@ -213,11 +219,11 @@ public class PayfortActivity extends Activity {
 
     private Map<String, Object> collectRequestMap(String sdkToken) {
         Map<String, Object> requestMap = new HashMap<>();
-        requestMap.put("command", "PURCHASE");
+        requestMap.put("command", command);
         requestMap.put("customer_email", customerEmail);
         requestMap.put("currency", currency);
         requestMap.put("amount", amount);
-        requestMap.put("language", "en");
+        requestMap.put("language", language);
         requestMap.put("merchant_reference", merchantReference);
         requestMap.put("customer_name", customerName);
         requestMap.put("customer_ip", customerIp);

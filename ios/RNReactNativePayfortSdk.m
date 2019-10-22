@@ -39,7 +39,7 @@ RCT_EXPORT_METHOD(openPayfort:(NSDictionary *)indic createDialog:(RCTResponseSen
   [post appendString:data[@"request_phrase"]];
   [post appendFormat:@"access_code=%@", data[@"access_code"]];
   [post appendFormat:@"device_id=%@",  udidString];
-  [post appendFormat:@"language=%@", @"en"];
+  [post appendFormat:@"language=%@", data[@"language"]];
   [post appendFormat:@"merchant_identifier=%@", data[@"merchant_identifier"]];
   [post appendFormat:@"service_command=%@", @"SDK_TOKEN"];
   [post appendString:data[@"request_phrase"]];
@@ -117,8 +117,8 @@ RCT_EXPORT_METHOD(openPayfort:(NSDictionary *)indic createDialog:(RCTResponseSen
   [request setValue:data[@"customer_ip"] forKey:@"customer_ip"];
   [request setValue:data[@"merchant_reference"] forKey:@"merchant_reference"];
   [request setValue:sdkToken forKey:@"sdk_token"];
-  [request setValue:@"PURCHASE" forKey:@"command"];
-  [request setValue:@"en" forKey:@"language"];
+  [request setValue:data[@"command"] forKey:@"command"];
+  [request setValue:data[@"language"] forKey:@"language"];
     if (data[@"payment_option"]) {
         [request setValue:data[@"payment_option"] forKey:@"payment_option"];
     }else{
