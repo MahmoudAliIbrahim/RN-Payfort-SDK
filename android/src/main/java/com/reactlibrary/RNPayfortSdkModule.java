@@ -61,11 +61,11 @@ public class RNPayfortSdkModule extends ReactContextBaseJavaModule {
     if(data.hasKey("customer_ip")) {
       intent.putExtra("customer_ip", data.getString("customer_ip"));
     }
-    if(data.hasKey("payment_option")) {
-      intent.putExtra("payment_option", data.getString("payment_option"));
+    if(data.hasKey("command")) {
+      intent.putExtra("command", data.getString("command"));
     }
-    if(data.hasKey("order_description")) {
-      intent.putExtra("order_description", data.getString("order_description"));
+    if(data.hasKey("language")) {
+      intent.putExtra("language", data.getString("language"));
     }
     getCurrentActivity().startActivity(intent);
   }
