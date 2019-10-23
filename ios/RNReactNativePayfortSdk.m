@@ -108,7 +108,6 @@ RCT_EXPORT_METHOD(openPayfort:(NSDictionary *)indic createDialog:(RCTResponseSen
 
 - (void)openPayfort:(NSString *)sdkToken{
    NSLog(@"openPayfort");
-  [self stopLoadingData];
   NSMutableDictionary *request = [[NSMutableDictionary alloc]init];
   [request setValue:data[@"amount"] forKey:@"amount"];
   [request setValue:data[@"currency"] forKey:@"currency"];
@@ -133,7 +132,9 @@ RCT_EXPORT_METHOD(openPayfort:(NSDictionary *)indic createDialog:(RCTResponseSen
     }else{
       payfort = [[PayFortController alloc] initWithEnviroment:KPayFortEnviromentSandBox];
     }
-    payfort.IsShowResponsePage = true;
+    payfort.IsShowResponsePage = data[@"showResponse"];
+    payfort.HideLoading = data[@"showLoading"];
+    [self stopLoadingData];
     
     NSArray *events = @[];
     [payfort callPayFortWithRequest:request currentViewController:rootViewController
