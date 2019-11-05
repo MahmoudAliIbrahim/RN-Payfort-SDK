@@ -132,6 +132,9 @@ RCT_EXPORT_METHOD(openPayfort:(NSDictionary *)indic createDialog:(RCTResponseSen
     }else{
       payfort = [[PayFortController alloc] initWithEnviroment:KPayFortEnviromentSandBox];
     }
+      
+    [payfort setPayFortCustomViewNib:@"PayFortCustomView"];
+      
     payfort.IsShowResponsePage = data[@"showResponse"];
     payfort.HideLoading = data[@"showLoading"];
     [self stopLoadingData];
