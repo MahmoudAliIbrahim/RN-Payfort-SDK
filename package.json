@@ -1,6 +1,6 @@
 {
   "name": "@mahmoudaliibrahim/react-native-payfort-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "The first completed React Native library for Payfort SDK integration ",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/crabbynguyen/RN-Payfort-SDK.git"
+    "url": "git+ssh://git@github.com/MahmoudAliIbrahim/RN-Payfort-SDK.git"
   },
   "author": "Glenn, Chau",
   "license": "MIT",
@@ -23,9 +23,9 @@
     "react-native": "^0.56.0"
   },
   "bugs": {
-    "url": "https://github.com/crabbynguyen/RN-Payfort-SDK/issues"
+    "url": "https://github.com/MahmoudAliIbrahim/RN-Payfort-SDK/issues"
   },
-  "homepage": "https://github.com/crabbynguyen/RN-Payfort-SDK#readme",
+  "homepage": "https://github.com/MahmoudAliIbrahim/RN-Payfort-SDK#readme",
   "dependencies": {},
   "devDependencies": {}
 }
