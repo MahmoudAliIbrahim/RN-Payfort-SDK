@@ -1,3 +1,5 @@
+### out-dated will be updated soon.
+
 
 # react-native-payfort-sdk
 
