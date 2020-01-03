@@ -1,15 +1,12 @@
-### out-dated will be updated soon.
-
-
-# react-native-payfort-sdk
+# @mahmoudaliibrahim/react-native-payfort-sdk
 
 ## Getting started
 
-`$ npm install react-native-payfort-sdk --save`
+`$ npm install @mahmoudaliibrahim/react-native-payfort-sdk --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-payfort-sdk`
+`$ react-native link @mahmoudaliibrahim/react-native-payfort-sdk`
 
 ### Add library to each platform
 
@@ -36,7 +33,7 @@
 #### First, you have to read the [document](https://docs.payfort.com/docs/mobile-sdk/build/index.html#before-starting-the-integration-section-in-the-api) from Payfort carefully
 
 ```javascript
-import RNReactNativePayfortSdk from 'react-native-payfort-sdk';
+import RNReactNativePayfortSdk from '@mahmoudaliibrahim/react-native-payfort-sdk';
 
 let data = {};
 data['access_code'] = 'abcdxyzqwerty';          // require field
