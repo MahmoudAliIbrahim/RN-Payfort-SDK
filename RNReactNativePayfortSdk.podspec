@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNReactNativePayfortSdk"
-  s.version      = "1.0.0"
+  s.version      = "1.0.6"
   s.summary      = "RNReactNativePayfortSdk"
   s.description  = <<-DESC
                   RNReactNativePayfortSdk
